@@ -8,3 +8,9 @@ kicad-portable
 ```
 %LOCALAPPDATA%\Programs\KiCad\7.0\bin\kicad.exe
 ```
+### Docs
+- https://docs.kicad.org/7.0/en/kicad/kicad.pdf
+
+### ENV
+- `KICAD_CONFIG_HOME`
+- `KICAD_DOCUMENTS_HOME`
