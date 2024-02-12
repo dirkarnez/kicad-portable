@@ -13,7 +13,7 @@ jobs:
     name: Create Release
     runs-on: windows-latest
     env:
-      targetZip: medieval-cue-splitter-portable-${{ github.ref_name }}.zip
+      targetZip: kicad-portable-${{ github.ref_name }}.zip
       version: 7.0.10
     steps:
       - uses: actions/checkout@v4
@@ -26,22 +26,22 @@ jobs:
       - shell: cmd
         run: |
           set __COMPAT_LAYER=RUNASINVOKER &&^
-          .\installer.exe /currentuser /S /D="1234" &&^
+          .\installer.exe /currentuser /S &&^
           dir
           
-      # - shell: cmd
-      #   run: xcopy /H /Y /C "CUE_Splitter.exe.Portable.cmd" "E8B158F"
+      - shell: cmd
+        run: |
+          xcopy /H /Y /C "kicad.exe.Portable.cmd" "%LOCALAPPDATA%\Programs\KiCad\7.0\bin\"
         
-      - name: Archive Release
-        uses: thedoctor0/zip-release@master
-        with:
-          type: 'zip'
-          directory: "E8B158F"
-          filename: "${{ env.targetZip }}"
+      - shell: cmd
+        run: |
+          cd /d "%LOCALAPPDATA%\Programs\KiCad\7.0" &&^
+          7z.exe a "${{ github.workspace }}\${{ env.targetZip }}" &&^
+          dir
           
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "E8B158F/${{ env.targetZip }}"
+          artifacts: "${{ env.targetZip }}"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
