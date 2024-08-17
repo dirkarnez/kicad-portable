@@ -14,13 +14,13 @@ jobs:
     runs-on: windows-latest
     env:
       targetZip: kicad-portable-${{ github.ref_name }}.zip
-      version: 7.0.10
+      version: 8.0.4
     steps:
       - uses: actions/checkout@v4
       
       - name: installer
         shell: cmd
-        run: |
+        run: | 
           curl https://github.com/KiCad/kicad-source-mirror/releases/download/${{ env.version }}/kicad-${{ env.version }}-x86_64.exe -L --output installer.exe
           
       - shell: cmd
@@ -31,11 +31,11 @@ jobs:
           
       - shell: cmd
         run: |
-          xcopy /H /Y /C "kicad.exe.Portable.cmd" "%LOCALAPPDATA%\Programs\KiCad\7.0\bin\"
+          xcopy /H /Y /C "kicad.exe.Portable.cmd" "%LOCALAPPDATA%\Programs\KiCad\8.0\bin\"
         
       - shell: cmd
         run: |
-          cd /d "%LOCALAPPDATA%\Programs\KiCad\7.0" &&^
+          cd /d "%LOCALAPPDATA%\Programs\KiCad\8.0" &&^
           7z.exe a "${{ github.workspace }}\${{ env.targetZip }}" &&^
           dir
           
