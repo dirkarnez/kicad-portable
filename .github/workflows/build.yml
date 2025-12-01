@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
     env:
       targetZip: kicad-portable-${{ github.ref_name }}.zip
-      version: 8.0.6
+      version: 9.0.6
     steps:
       - uses: actions/checkout@v4
       
