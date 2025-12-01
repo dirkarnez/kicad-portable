@@ -10,6 +10,8 @@ kicad-portable
 ```
 ### Docs
 - https://docs.kicad.org/7.0/en/kicad/kicad.pdf
+- https://docs.kicad.org/8.0/en/kicad/kicad.pdf
+- https://docs.kicad.org/9.0/en/kicad/kicad.pdf
 
 ### ENV
 - `KICAD_CONFIG_HOME`
